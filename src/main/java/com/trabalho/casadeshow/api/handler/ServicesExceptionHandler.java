@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 
 import com.trabalho.casadeshow.api.domain.DetalhesErro;
+import com.trabalho.casadeshow.api.services.exception.CasaExistenteException;
 import com.trabalho.casadeshow.api.services.exception.CasaNaoEncontradaException;
 import com.trabalho.casadeshow.api.services.exception.EventoExistenteException;
 import com.trabalho.casadeshow.api.services.exception.EventoNaoEncontradoException;
@@ -49,6 +50,16 @@ public class ServicesExceptionHandler {
 		DetalhesErro erro = new DetalhesErro();
 		erro.setStatus(409l);
 		erro.setTitulo("Evento já existente");
+        erro.setTimestamp(System.currentTimeMillis());
+		
+		return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
+	}
+	
+	@ExceptionHandler(CasaExistenteException.class)
+	public ResponseEntity<DetalhesErro> handlerCasaExistentesException(CasaExistenteException e, HttpServletRequest request){
+		DetalhesErro erro = new DetalhesErro();
+		erro.setStatus(409l);
+		erro.setTitulo("Casa já existente");
         erro.setTimestamp(System.currentTimeMillis());
 		
 		return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);

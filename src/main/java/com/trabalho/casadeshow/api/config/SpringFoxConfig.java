@@ -10,6 +10,7 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
+import springfox.documentation.service.Tags;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -25,6 +26,7 @@ public class SpringFoxConfig implements WebMvcConfigurer{
 				.paths(PathSelectors.any())
 				.build()
 			.apiInfo(apiInfo());
+		    
 	}
 	
 	public ApiInfo apiInfo() {
@@ -33,6 +35,7 @@ public class SpringFoxConfig implements WebMvcConfigurer{
 				.description("API aberta para clientes")
 				.version("1")
 				.contact(new Contact("GFT", "https://www.gft.com", "https://www.linkedin.com/company/gft-group"))
+				
 				.build();
 	}
 	

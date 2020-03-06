@@ -47,7 +47,8 @@ public class EventoResources {
 	
 	@ApiOperation("Salvar um evento")
 	@PostMapping
-	public ResponseEntity<Void> salvar(@Validated @RequestBody Cadastroevento evento){
+	public ResponseEntity<Cadastroevento> salvar(@Validated @RequestBody Cadastroevento evento){
+		evento = eventoServices.salvar(evento);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{codigo}").buildAndExpand(evento.getCodigo()).toUri();
 		return ResponseEntity.created(uri).build();
 	}

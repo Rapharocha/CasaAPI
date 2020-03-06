@@ -39,10 +39,11 @@ public class CasaResources {
 	
 	@ApiOperation("Salvar Casa de Show")
 	@PostMapping
-	public ResponseEntity<Void> salvar(@Validated @RequestBody Cadastrocasa casa){
+	public ResponseEntity<List<Cadastrocasa>> salvar(@Validated @RequestBody Cadastrocasa casa){
 		casa = casaServices.salvar(casa);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{codigo}")
 				                    .buildAndExpand(casa.getCodigo()).toUri();
+		
 		return ResponseEntity.created(uri).build();
 	}
 	

@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.trabalho.casadeshow.api.model.Cadastrocasa;
 import com.trabalho.casadeshow.api.repository.Cadastroshow;
+import com.trabalho.casadeshow.api.services.exception.CasaExistenteException;
 import com.trabalho.casadeshow.api.services.exception.CasaNaoEncontradaException;
-import com.trabalho.casadeshow.api.services.exception.EventoExistenteException;
 
 @Service
 public class CasaServices {
@@ -25,15 +25,20 @@ public class CasaServices {
 		return cadastroshow.findAll();
 	}
 	
-	public Cadastrocasa salvar(Cadastrocasa casa) {
-		if(casa.getCodigo() != null) {
+    
+	public Cadastrocasa salvar(Cadastrocasa casa) {    	 
+    	 if(casa.getCodigo() != null ) {
 			Optional<Cadastrocasa> e = cadastroshow.findById(casa.getCodigo());
-			if(e.isPresent()) {
-				throw new EventoExistenteException("O evento já existe");
+			if(e.isPresent() ) {
+				
+				throw new CasaExistenteException("Local já existe");
 			}
-		}
+			
+			}
 		return cadastroshow.save(casa);
 	}
+     
+ 
 	
 	public Optional<Cadastrocasa> buscar( Long codigo) {
 		Optional<Cadastrocasa> casa = cadastroshow.findById(codigo);
@@ -43,8 +48,8 @@ public class CasaServices {
 		return casa;
 	}
 	
-	public Cadastrocasa buscarPorNome(String nome) {
-		Cadastrocasa casa = cadastroshow.findByNome(nome);
+	public List<Cadastrocasa> buscarPorNome(String nome) {
+		List<Cadastrocasa> casa = cadastroshow.findByNome(nome);
 		if(casa == null) {
 			throw new CasaNaoEncontradaException("Casa não pôde ser encontrada");
 		}
