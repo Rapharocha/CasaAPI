@@ -33,7 +33,7 @@ public class Role implements GrantedAuthority{
 	@JsonProperty("autorizado")
 	@Override
 	public String getAuthority() {
-		// TODO Auto-generated method stub
+		
 		return this.getNomeRole();
 	}
 

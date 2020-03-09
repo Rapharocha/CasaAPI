@@ -25,10 +25,11 @@ public class EventoServices {
 	
 	public Optional<Cadastroevento> buscar (Long codigo) {
 		Optional<Cadastroevento> evento = eventosRepository.findById(codigo);
-		if(evento.isEmpty()) {
-			throw new EventoNaoEncontradoException("O evento não pôde ser encontrado");
+		if(evento.isPresent()) {
+			return evento;
 		}
-		return evento;
+		throw new EventoNaoEncontradoException("O evento não pôde ser encontrado");
+		
 	}
 	
 	public Cadastroevento salvar(Cadastroevento evento) {

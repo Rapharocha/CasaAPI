@@ -42,10 +42,11 @@ public class CasaServices {
 	
 	public Optional<Cadastrocasa> buscar( Long codigo) {
 		Optional<Cadastrocasa> casa = cadastroshow.findById(codigo);
-		if(casa.isEmpty()) {
-			throw new CasaNaoEncontradaException("Casa não pôde ser encontrada");
+		if(casa.isPresent()) {
+			return casa;
 		}
-		return casa;
+		throw new CasaNaoEncontradaException("Casa não pôde ser encontrada");
+		
 	}
 	
 	public List<Cadastrocasa> buscarPorNome(String nome) {

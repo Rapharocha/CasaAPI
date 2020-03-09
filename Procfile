@@ -1,0 +1,1 @@
+web: java -Dserver.port=$ORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/CasadeShowAPI*.jar
