@@ -22,9 +22,10 @@ public class VendasServices {
 	
 	public Optional<Vendas> buscar(Long id) {
 		Optional<Vendas> vendas = vendasRepository.findById(id);
-		if(vendas.isEmpty()) {
-			throw new VendasNaoEncontradaException("vendas não pode ser encontrada");
+		if(vendas.isPresent()) {
+			return vendas;
 		}
-		return vendas;
+		throw new VendasNaoEncontradaException("vendas não pode ser encontrada");
+		
 	}
 }
