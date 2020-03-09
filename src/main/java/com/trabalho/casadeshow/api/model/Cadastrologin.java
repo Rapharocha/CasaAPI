@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel("Representa um Usuário")
+@ApiModel("Usuário")
 @Entity
 public class Cadastrologin implements UserDetails {
     

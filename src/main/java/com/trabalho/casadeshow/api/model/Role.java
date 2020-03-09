@@ -11,6 +11,8 @@ import org.springframework.security.core.GrantedAuthority;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.swagger.annotations.ApiModel;
+@ApiModel("Permissão")
 @Entity
 public class Role implements GrantedAuthority{
 

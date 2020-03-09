@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 
 
-@ApiModel(description = "Representa uma Casa para Show")
+@ApiModel(value = "Casa de Show")
 @Entity
 public class Cadastrocasa {
 

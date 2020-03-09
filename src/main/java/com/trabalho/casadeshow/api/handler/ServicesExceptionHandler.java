@@ -16,6 +16,7 @@ import com.trabalho.casadeshow.api.services.exception.CasaExistenteException;
 import com.trabalho.casadeshow.api.services.exception.CasaNaoEncontradaException;
 import com.trabalho.casadeshow.api.services.exception.EventoExistenteException;
 import com.trabalho.casadeshow.api.services.exception.EventoNaoEncontradoException;
+import com.trabalho.casadeshow.api.services.exception.VendasNaoEncontradaException;
 
 
 
@@ -108,5 +109,16 @@ public class ServicesExceptionHandler {
         erro.setTimestamp(System.currentTimeMillis());
 		
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
+	}
+	
+	@ExceptionHandler(VendasNaoEncontradaException.class)
+	public ResponseEntity<DetalhesErro> handlerVendasNaoEncontradaException(VendasNaoEncontradaException e, HttpServletRequest request){
+		
+		DetalhesErro erro = new DetalhesErro();
+		erro.setStatus(404l);
+		erro.setTitulo("A venda não pôde ser encontrada");
+        erro.setTimestamp(System.currentTimeMillis());
+		
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
 	}
 }

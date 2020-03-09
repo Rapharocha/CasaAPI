@@ -26,7 +26,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@ApiModel(description = "Representa um Evento")
+@ApiModel("Evento")
 @Entity
 public class Cadastroevento {
 
