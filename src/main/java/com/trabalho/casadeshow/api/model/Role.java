@@ -46,10 +46,12 @@ public class Role implements GrantedAuthority{
 	}
 
 
+	@SuppressWarnings("unused")
 	private List<Cadastrologin> getUsuarios() {
 		return usuarios;
 	}
 
+	@SuppressWarnings("unused")
 	private void setUsuarios(List<Cadastrologin> usuarios) {
 		this.usuarios = usuarios;
 	}

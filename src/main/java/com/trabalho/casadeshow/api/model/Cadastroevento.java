@@ -73,7 +73,7 @@ public class Cadastroevento {
 	@DecimalMax(value = "999999999999999", message = "Valor não pode ser maior que 999.999.999.999.999,00")
 	@JsonProperty("preço")
 	@ApiModelProperty(example = "R$ 500,00")
-	private BigDecimal valor;
+	private Double valor;
 	
 	
 	@Enumerated(EnumType.STRING)
@@ -115,10 +115,10 @@ public class Cadastroevento {
 	public void setDataevento(Date dataevento) {
 		this.dataevento = dataevento;
 	}
-	public BigDecimal getValor() {
+	public Double getValor() {
 		return valor;
 	}
-	public void setValor(BigDecimal valor) {
+	public void setValor(Double valor) {
 		this.valor = valor;
 	}
 
