@@ -51,7 +51,7 @@ public class CasaServices {
 	
 	public List<Cadastrocasa> buscarPorNome(String nome) {
 		List<Cadastrocasa> casa = cadastroshow.findByNome(nome);
-		if(casa == null) {
+		if(casa.isEmpty()) {
 			throw new CasaNaoEncontradaException("Casa não pôde ser encontrada");
 		}
 		return casa;

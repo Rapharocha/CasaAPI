@@ -73,6 +73,14 @@ public class Cadastrocasa {
 	@JsonInclude(Include.NON_NULL)
 	private List<Cadastroevento> cadastroevento;
 	
+	public Cadastrocasa() {}
+	
+	public Cadastrocasa(Long codigo, String nome, String endereco) {
+		this.codigo = codigo;
+		this.nome = nome;
+		this.endereco = endereco;
+	}
+	
 	public Long getCodigo() {
 		return codigo;
 	}
